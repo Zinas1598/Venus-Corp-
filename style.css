@@ -1,0 +1,363 @@
+/* Epic Venus Corp Styles */
+body {
+  margin: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: #fff;
+  min-height: 100vh;
+  background: linear-gradient(120deg, #232526 0%, #414345 100%), url('https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1500&q=80') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+  overflow-x: hidden;
+}
+.overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(10, 20, 40, 0.7);
+  z-index: 0;
+  pointer-events: none;
+  animation: overlayFade 3s infinite alternate;
+}
+@keyframes overlayFade {
+  from { background: rgba(10, 20, 40, 0.7);}
+  to { background: rgba(0, 255, 231, 0.08);}
+}
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px 80px 20px;
+  display: none;
+  animation: fadeIn 1s;
+  background: rgba(20,30,50,0.85);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px #00ffe733, 0 4px 24px #0005;
+}
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+header h1 {
+  font-size: 3.2rem;
+  letter-spacing: 2px;
+  margin: 0;
+  font-weight: 700;
+  color: #00ffe7;
+  text-shadow: 0 2px 24px #00ffe7aa, 0 2px 16px #000a;
+  animation: glow 2s infinite alternate;
+}
+@keyframes glow {
+  from { text-shadow: 0 2px 24px #00ffe7aa, 0 2px 16px #000a; }
+  to { text-shadow: 0 2px 48px #00ffe7, 0 2px 16px #000a; }
+}
+header p {
+  font-size: 1.3rem;
+  color: #e0e0e0;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-shadow: 0 2px 8px #000a;
+  letter-spacing: 1px;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 8px 18px;
+  border-radius: 20px;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px #00ffe733;
+  position: relative;
+  overflow: hidden;
+}
+nav a::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, #00ffe7 0%, #00b3ff 100%);
+  transition: width 0.3s;
+  position: absolute;
+  left: 0; bottom: 0;
+}
+nav a:hover::after {
+  width: 100%;
+}
+nav a:hover {
+  background: #00ffe7;
+  color: #222;
+  box-shadow: 0 4px 16px #00ffe7aa;
+  transform: scale(1.08) rotate(-2deg);
+}
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+.feature-card {
+  background: rgba(20, 30, 50, 0.92);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px #00ffe733, 0 4px 24px #0005;
+  padding: 36px 28px;
+  flex: 1 1 260px;
+  max-width: 320px;
+  min-width: 220px;
+  text-align: center;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.2s;
+  border: 1.5px solid #00ffe7;
+  backdrop-filter: blur(2px);
+  position: relative;
+  overflow: hidden;
+}
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: -40px; left: -40px;
+  width: 100px; height: 100px;
+  background: radial-gradient(circle, #00ffe7 0%, transparent 80%);
+  opacity: 0.13;
+  z-index: 0;
+  pointer-events: none;
+}
+.feature-card:hover {
+  transform: translateY(-12px) scale(1.04) rotate(-1deg);
+  box-shadow: 0 16px 48px #00ffe7cc, 0 8px 32px #000a;
+  border-color: #fff;
+}
+.feature-card h3 {
+  color: #00ffe7;
+  margin-bottom: 12px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  z-index: 1;
+  position: relative;
+}
+.feature-card p {
+  color: #cfd8dc;
+  font-size: 1.05rem;
+  z-index: 1;
+  position: relative;
+}
+.cta-section {
+  text-align: center;
+  margin-top: 40px;
+}
+.cta-section h2 {
+  font-size: 2.1rem;
+  color: #fff;
+  margin-bottom: 18px;
+  text-shadow: 0 2px 16px #00ffe7aa;
+}
+.cta-section button {
+  background: linear-gradient(90deg, #00ffe7 0%, #00b3ff 100%);
+  color: #222;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 30px;
+  padding: 16px 44px;
+  cursor: pointer;
+  box-shadow: 0 4px 24px #00ffe755;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+  margin-top: 10px;
+}
+.cta-section button:hover {
+  background: #fff;
+  color: #00ffe7;
+  box-shadow: 0 8px 32px #00ffe7aa;
+  transform: scale(1.07) rotate(-2deg);
+}
+footer {
+  text-align: center;
+  color: #b0bec5;
+  font-size: 1rem;
+  margin-top: 60px;
+  padding-bottom: 20px;
+  z-index: 1;
+  position: relative;
+  text-shadow: 0 2px 8px #000a;
+  letter-spacing: 1px;
+}
+@media (max-width: 900px) {
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  .container {
+    padding: 20px 5px 60px 5px;
+  }
+  .feature-card {
+    padding: 20px 10px;
+  }
+}
+.modal-bg {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+}
+.modal-bg.active {
+  display: flex;
+}
+.modal {
+  background: #181f2b;
+  border-radius: 18px;
+  padding: 36px 28px;
+  min-width: 300px;
+  max-width: 90vw;
+  box-shadow: 0 8px 32px #00ffe755;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  animation: fadeIn 0.5s;
+}
+.modal h3 {
+  margin-top: 0;
+  color: #00ffe7;
+}
+.modal input, .modal select {
+  width: 90%;
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: none;
+  background: #222b3a;
+  color: #fff;
+  font-size: 1rem;
+}
+.modal button {
+  background: #00ffe7;
+  color: #222;
+  font-weight: 700;
+  border: none;
+  border-radius: 20px;
+  padding: 12px 36px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s, transform 0.2s;
+}
+.modal button:hover {
+  background: #fff;
+  color: #00ffe7;
+  transform: scale(1.05);
+}
+.modal .close {
+  position: absolute;
+  top: 10px; right: 18px;
+  font-size: 1.5rem;
+  color: #00ffe7;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: color 0.2s;
+}
+.modal .close:hover {
+  color: #fff;
+}
+.success-message {
+  color: #00ffe7;
+  margin-top: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.login-bg {
+  display: flex;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(10, 20, 40, 0.85);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.7s;
+}
+.login-modal {
+  background: #181f2b;
+  border-radius: 18px;
+  padding: 38px 30px;
+  min-width: 320px;
+  max-width: 95vw;
+  box-shadow: 0 8px 32px #00ffe755;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  animation: fadeIn 0.5s;
+}
+.login-modal h2 {
+  color: #00ffe7;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+}
+.login-modal input {
+  width: 90%;
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: none;
+  background: #222b3a;
+  color: #fff;
+  font-size: 1rem;
+}
+.login-modal button {
+  background: #00ffe7;
+  color: #222;
+  font-weight: 700;
+  border: none;
+  border-radius: 20px;
+  padding: 12px 36px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s, transform 0.2s;
+}
+.login-modal button:hover {
+  background: #fff;
+  color: #00ffe7;
+  transform: scale(1.05);
+}
+.login-error {
+  color: #ff6b6b;
+  margin-top: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.signup-success, .success-message {
+  color: #00ffe7;
+  margin-top: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.auth-switch {
+  color: #00ffe7;
+  cursor: pointer;
+  margin-top: 18px;
+  display: inline-block;
+  font-size: 1rem;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.auth-switch:hover {
+  color: #fff;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95);}
+  to { opacity: 1; transform: scale(1);}
+}

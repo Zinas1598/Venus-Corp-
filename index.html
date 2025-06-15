@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Venus Corp - Invest in Your Future</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="overlay"></div>
+  <!-- Login/Signup Modal -->
+  <div class="login-bg" id="loginBg">
+    <!-- Login Form -->
+    <form class="login-modal" id="loginForm" autocomplete="off">
+      <h2>Login to Venus Corp</h2>
+      <input type="text" id="loginUser" placeholder="Username" required><br>
+      <input type="password" id="loginPass" placeholder="Password" minlength="4" maxlength="6"><br>
+      <button type="submit">Login</button>
+      <div class="login-error" id="loginError"></div>
+      <span class="auth-switch" id="showSignup">Don't have an account? Sign up</span>
+    </form>
+    <!-- Signup Form -->
+    <form class="login-modal" id="signupForm" style="display:none;" autocomplete="off">
+      <h2>Sign Up for Venus Corp</h2>
+      <input type="text" id="signupUser" placeholder="Choose a Username" required><br>
+      <input type="password" id="signupPass" placeholder="Choose a Password" minlength="4" maxlength="6"><br>
+      <input type="password" id="signupPass2" placeholder="Confirm Password" minlength="4" maxlength="6"><br>
+      <button type="submit">Sign Up</button>
+      <div class="login-error" id="signupError"></div>
+      <div class="signup-success" id="signupSuccess"></div>
+      <span class="auth-switch" id="showLogin">Already have an account? Login</span>
+    </form>
+  </div>
+  <div class="container" id="mainContent">
+    <header>
+      <h1>Venus Corp</h1>
+      <p>Invest in your future with confidence. Global opportunities, secure returns.</p>
+    </header>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#plans">Investment Plans</a>
+      <a href="#about" id="aboutNav">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <section class="features" id="features">
+      <div class="feature-card">
+        <h3>Global Investments</h3>
+        <p>Diversify your portfolio with access to markets around the world.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Secure Platform</h3>
+        <p>State-of-the-art security and encryption to protect your assets and data.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Expert Support</h3>
+        <p>24/7 support from our team of investment professionals.</p>
+      </div>
+      <div class="feature-card" id="analyticsCard" style="cursor:pointer;">
+        <h3>Real-Time Analytics</h3>
+        <p>Track your investments and returns with live dashboards and reports.</p>
+      </div>
+    </section>
+    <section class="features" id="plans">
+      <div class="feature-card">
+        <h3>Starter Plan</h3>
+        <p>Begin investing with as little as ₦3000 for an increase of ₦15000. Perfect for new investors.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Growth Plan</h3>
+        <p>Grow your wealth with as little as ₦6000 with diversified assets and higher returns with an increase of ₦25000.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Elite Plan</h3>
+        <p>Exclusive access to premium opportunities and personalized advice with an amount of ₦9000 and a Max return of ₦55000.</p>
+      </div>
+    </section>
+    <div class="cta-section">
+      <h2>Ready to start your investment journey?</h2>
+      <button id="investBtn">Invest Now</button>
+    </div>
+    <section id="about" style="margin-top:60px; display:none;">
+      <h2 style="color:#00ffe7;">About Venus Corp</h2>
+      <p style="color:#e0e0e0;max-width:700px;margin:20px auto 0 auto;text-align:center;">
+        Venus Corp is a leading investment platform dedicated to helping individuals and organizations achieve their financial goals. With a focus on transparency, security, and innovation, we provide access to a wide range of investment products and expert guidance every step of the way.
+      </p>
+    </section>
+    <section id="contact" style="margin-top:60px;">
+      <h2 style="color:#00ffe7;">Contact Us</h2>
+      <p style="color:#e0e0e0;text-align:center;">
+        Email: <a href="mailto:support@venuscorp.com" style="color:#00ffe7;">support@venuscorp.com</a> <br>
+        Phone: <a href="tel:+2348086957930" style="color:#00ffe7;">+2348086957930</a>
+      </p>
+    </section>
+    <footer>
+      &copy; 2025 Venus Corp. All rights reserved.
+    </footer>
+  </div>
+  <div class="modal-bg" id="modalBg">
+    <div class="modal">
+      <button class="close" id="closeModal">&times;</button>
+      <h3>Start Investing</h3>
+      <form id="investForm">
+        <h3>Tranfer To: 7045481500</h3>
+        <h4>Account Name: USMAN OLAITAN</h4>
+        <h5>Bank Name: PALMPAY</h5>
+        <select id="plan" required>
+          <option value="">Select Plan</option>
+          <option value="Starter">Starter Plan: ₦3000 </option>
+          <option value="Growth">Growth Plan: ₦6000</option>
+          <option value="Elite">Elite Plan: ₦9000 </option>
+        </select><br>
+        <input type="number" id="amount" placeholder="Investment Amount (₦)" min="3000" max="70000"><br>
+        <button type="submit">Submit</button>
+      </form>
+      <div class="success-message" id="successMsg"></div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
