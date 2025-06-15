@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Venus Corp Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(120deg, #232526 0%, #414345 100%);
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: #fff;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .dashboard-container {
+      max-width: 800px;
+      margin: 50px auto 0 auto;
+      background: rgba(20,30,50,0.98);
+      border-radius: 22px;
+      box-shadow: 0 12px 48px #00ffe755, 0 4px 24px #0008;
+      padding: 44px 32px 36px 32px;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .dashboard-container::before {
+      content: "";
+      position: absolute;
+      top: -80px; left: -80px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, #00ffe7 0%, transparent 80%);
+      opacity: 0.15;
+      z-index: 0;
+    }
+    .dashboard-container h2 {
+      color: #00ffe7;
+      margin-bottom: 28px;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 24px #00ffe7aa, 0 2px 16px #000a;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 2px 24px #00ffe7aa, 0 2px 16px #000a; }
+      to { text-shadow: 0 2px 48px #00ffe7, 0 2px 16px #000a; }
+    }
+    .dashboard-stats {
+      display: flex;
+      justify-content: space-around;
+      margin: 30px 0 40px 0;
+      flex-wrap: wrap;
+      gap: 24px;
+      z-index: 1;
+      position: relative;
+    }
+    .stat-card {
+      background: #181f2b;
+      border-radius: 16px;
+      padding: 30px 22px;
+      min-width: 170px;
+      box-shadow: 0 4px 24px #00ffe733;
+      color: #fff;
+      flex: 1 1 200px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1.5px solid #00ffe7;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 8px 32px #00ffe7cc, 0 4px 24px #000a;
+      border-color: #fff;
+    }
+    .stat-card h3 {
+      color: #00ffe7;
+      margin-bottom: 10px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .stat-card .stat-value {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 4px;
+      color: #fff;
+      text-shadow: 0 2px 12px #00ffe7aa;
+    }
+    .dashboard-history {
+      margin-top: 40px;
+      text-align: left;
+      z-index: 1;
+      position: relative;
+    }
+    .dashboard-history h4 {
+      color: #00ffe7;
+      margin-bottom: 16px;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+    .dashboard-history table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #232b3a;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px #00ffe733;
+    }
+    .dashboard-history th, .dashboard-history td {
+      padding: 12px 10px;
+      border-bottom: 1px solid #222b3a;
+      color: #e0e0e0;
+      text-align: left;
+      font-size: 1.05rem;
+    }
+    .dashboard-history th {
+      background: #181f2b;
+      color: #00ffe7;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .dashboard-history tr:last-child td {
+      border-bottom: none;
+    }
+    .logout-btn {
+      margin-top: 36px;
+      background: linear-gradient(90deg, #00ffe7 0%, #00b3ff 100%);
+      color: #181f2b;
+      border: none;
+      border-radius: 22px;
+      padding: 14px 44px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px #00ffe755;
+    }
+    .logout-btn:hover {
+      background: #fff;
+      color: #00ffe7;
+      box-shadow: 0 8px 32px #00ffe7aa;
+    }
+    /* Epic animated background effect */
+    .dashboard-container::after {
+      content: "";
+      position: absolute;
+      bottom: -100px; right: -100px;
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, #00ffe7 0%, transparent 80%);
+      opacity: 0.13;
+      z-index: 0;
+      animation: moveGlow 8s infinite alternate;
+    }
+    @keyframes moveGlow {
+      from { right: -100px; bottom: -100px; }
+      to { right: 0px; bottom: 0px; }
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .dashboard-stats { flex-direction: column; align-items: center; }
+      .stat-card { min-width: 220px; margin-bottom: 18px; }
+    }
+    @media (max-width: 600px) {
+      .dashboard-container { padding: 18px 2vw 24px 2vw; }
+      .stat-card { padding: 18px 8px; }
+      .dashboard-history th, .dashboard-history td { font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <h2>Welcome to Your Dashboard 🚀</h2>
+    <div class="dashboard-stats">
+      <div class="stat-card">
+        <h3>Total Invested</h3>
+        <div class="stat-value" id="totalInvested">₦0</div>
+      </div>
+      <div class="stat-card">
+        <h3>Expected Profit</h3>
+        <div class="stat-value" id="expectedProfit">₦0</div>
+      </div>
+      <div class="stat-card">
+        <h3>Active Plan</h3>
+        <div class="stat-value" id="activePlan">-</div>
+      </div>
+    </div>
+    <div class="dashboard-history">
+      <h4>Investment History</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Plan</th>
+            <th>Amount (₦)</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="historyTable">
+          <!-- Investment rows will be inserted here -->
+        </tbody>
+      </table>
+    </div>
+    <button class="logout-btn" id="logoutBtn">Logout</button>
+  </div>
+  <script>
+    // Simulate fetching user investment data from localStorage
+    function getInvestments() {
+      return JSON.parse(localStorage.getItem('venuscorp_investments') || '[]');
+    }
+    function getUser() {
+      return JSON.parse(localStorage.getItem('venuscorp_user') || '{}');
+    }
+    // Calculate stats
+    function updateDashboard() {
+      const investments = getInvestments();
+      let total = 0;
+      let profit = 0;
+      let lastPlan = '-';
+      // Epic: Use fixed profit mapping for clarity
+      const profitMap = { Starter: 15000, Growth: 25000, Elite: 55000 };
+
+      // Fill table
+      const table = document.getElementById('historyTable');
+      table.innerHTML = '';
+      investments.forEach(inv => {
+        total += Number(inv.amount);
+        profit += profitMap[inv.plan] || 0;
+        lastPlan = inv.plan;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${inv.date}</td>
+          <td>${inv.plan}</td>
+          <td>${Number(inv.amount).toLocaleString()}</td>
+          <td>${inv.status || 'Active'}</td>
+        `;
+        table.appendChild(tr);
+      });
+
+      document.getElementById('totalInvested').textContent = '₦' + total.toLocaleString();
+      document.getElementById('expectedProfit').textContent = '₦' + profit.toLocaleString();
+      document.getElementById('activePlan').textContent = lastPlan || '-';
+    }
+
+    // Logout
+    document.getElementById('logoutBtn').onclick = function() {
+      localStorage.removeItem('venuscorp_user');
+      window.location.href = "index.html";
+    };
+
+    // On load
+    updateDashboard();
+  </script>
+</body>
+</html>

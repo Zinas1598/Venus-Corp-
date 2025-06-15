@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Venus Corp Payment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(120deg, #232526 0%, #414345 100%);
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: #fff;
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    .payment-container {
+      max-width: 420px;
+      margin: 70px auto 0 auto;
+      background: rgba(20,30,50,0.98);
+      border-radius: 22px;
+      box-shadow: 0 12px 48px #00ffe755, 0 4px 24px #0008;
+      padding: 44px 32px 36px 32px;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .payment-container::before {
+      content: "";
+      position: absolute;
+      top: -80px; left: -80px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, #00ffe7 0%, transparent 80%);
+      opacity: 0.15;
+      z-index: 0;
+    }
+    .payment-container h2 {
+      color: #00ffe7;
+      margin-bottom: 22px;
+      font-size: 2rem;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 24px #00ffe7aa, 0 2px 16px #000a;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 2px 24px #00ffe7aa, 0 2px 16px #000a; }
+      to { text-shadow: 0 2px 48px #00ffe7, 0 2px 16px #000a; }
+    }
+    .payment-details {
+      margin: 24px 0 10px 0;
+      font-size: 1.13rem;
+      color: #e0e0e0;
+      background: #232b3a;
+      border-radius: 10px;
+      padding: 18px 10px;
+      box-shadow: 0 2px 12px #00ffe733;
+      z-index: 1;
+      position: relative;
+    }
+    .timer {
+      font-size: 1.7rem;
+      color: #ff6b6b;
+      margin: 18px 0 10px 0;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 12px #ff6b6b55;
+      animation: pulse 1.2s infinite alternate;
+    }
+    @keyframes pulse {
+      from { color: #ff6b6b; }
+      to { color: #fff; }
+    }
+    .bank-details {
+      margin-top: 24px;
+      background: #181f2b;
+      border-radius: 12px;
+      padding: 18px 10px;
+      box-shadow: 0 2px 12px #00ffe733;
+      font-size: 1.08rem;
+      color: #fff;
+      z-index: 1;
+      position: relative;
+    }
+    .bank-details strong {
+      color: #00ffe7;
+      font-size: 1.1rem;
+    }
+    .back-btn {
+      margin-top: 32px;
+      background: linear-gradient(90deg, #00ffe7 0%, #00b3ff 100%);
+      color: #181f2b;
+      border: none;
+      border-radius: 22px;
+      padding: 14px 44px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px #00ffe755;
+    }
+    .back-btn:hover {
+      background: #fff;
+      color: #00ffe7;
+      box-shadow: 0 8px 32px #00ffe7aa;
+    }
+    .payment-container::after {
+      content: "";
+      position: absolute;
+      bottom: -100px; right: -100px;
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, #00ffe7 0%, transparent 80%);
+      opacity: 0.13;
+      z-index: 0;
+      animation: moveGlow 8s infinite alternate;
+    }
+    @keyframes moveGlow {
+      from { right: -100px; bottom: -100px; }
+      to { right: 0px; bottom: 0px; }
+    }
+    @media (max-width: 600px) {
+      .payment-container { padding: 18px 2vw 24px 2vw; }
+      .payment-details, .bank-details { padding: 10px 4px; }
+      .back-btn { padding: 10px 20px; font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="payment-container">
+    <h2>Complete Your Payment</h2>
+    <div class="payment-details" id="paymentDetails"></div>
+    <div class="timer" id="timer"></div>
+    <div class="bank-details">
+      <strong>Bank Transfer Details:</strong><br>
+      Account Number: <b>7045481500</b><br>
+      Account Name: <b>USMAN OLAITAN</b><br>
+      Bank Name: <b>PALMPAY</b>
+    </div>
+    <button class="back-btn" onclick="window.location.href='dashboard.html'">Go to Dashboard</button>
+  </div>
+  <script>
+    // Get payment info
+    const payment = JSON.parse(localStorage.getItem('venuscorp_payment_timer') || '{}');
+    const paymentDetails = document.getElementById('paymentDetails');
+    if (payment && payment.plan && payment.amount) {
+      paymentDetails.innerHTML = `
+        <b>Plan:</b> ${payment.plan}<br>
+        <b>Amount:</b> ₦${payment.amount.toLocaleString()}<br>
+        <b>Time left to pay:</b>
+      `;
+    } else {
+      paymentDetails.innerHTML = "No payment in progress.";
+    }
+
+    // Timer logic
+    const timerEl = document.getElementById('timer');
+    let duration = payment.duration || 3600;
+    let start = payment.start || Date.now();
+    function updateTimer() {
+      const now = Date.now();
+      let secondsLeft = duration - Math.floor((now - start) / 1000);
+      if (secondsLeft < 0) secondsLeft = 0;
+      const min = Math.floor(secondsLeft / 60);
+      const sec = secondsLeft % 60;
+      timerEl.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+      if (secondsLeft === 0) {
+        timerEl.textContent = "⏰ Payment time expired!";
+        timerEl.style.color = "#ff2d55";
+        paymentDetails.innerHTML += "<br><span style='color:#ff2d55;font-weight:bold;'>Please restart your investment process.</span>";
+      } else {
+        setTimeout(updateTimer, 1000);
+      }
+    }
+    updateTimer();
+  </script>
+</body>
+</html>
